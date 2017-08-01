@@ -1,0 +1,22 @@
+.mainContent{
+  width: 80%;
+  margin: 25px, 35px;
+  background-color: #941B0C;
+  border: 2px solid #621708;
+  border-radius: 15px;
+  padding: 20px;
+}
+body {
+  background-color: #220901;
+  padding: 35px;
+}
+
+.range-field {
+  width: 40%;
+  margin: auto;
+}
+
+.slider-question {
+  position: relative;
+  margin: auto;
+}
