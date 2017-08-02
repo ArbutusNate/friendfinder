@@ -3,10 +3,15 @@
   var app = express()
   var bodyParser = require("body-parser");
   var path = require("path");
+  var exphbs = require("express-handlebars");
 
 //Shortcuts
   var friends = require(path.join(__dirname, "../data/friends.js"));
   var friendList = friends.friends;
+
+// Set Handlebars as the default templating engine.
+  app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+  app.set("view engine", "handlebars");
 
 //Exports
   exports.getFriends = function(req, res){
@@ -16,7 +21,7 @@
   //Survey Posting and Friend-finding logic.
   exports.postSurvey = function(req, res){
     console.log("----pushing data----");
-    console.log(req.body);
+    console.log(req);
     var newScore = req.body.totalScore;
     var friendCompare = Math.abs(friendList[0].totalScore - newScore);
     var bestFriend = friendList[0];
@@ -34,6 +39,8 @@
         console.log(friendList[i].name + " is not your best friend.")
       }
     }
+    res.render("modal", bestFriend);
+    // $('#modal1').modal('open');
     friendList.push(req.body);
       //put bestFriend in a modal.
     // console.log(friendList);

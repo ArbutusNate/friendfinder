@@ -19,7 +19,10 @@
                 <input id="name" type="text" class="validate">
                 <label for="name">Name</label>
               </div>
-              <!-- Picture Input -->
+              <div class="input-field col s6">
+                <input id="picture" type="text" class="validate">
+                <label for="name">Picture Link</label>
+              </div>
             </div>
             <div class="row">
               <p class="range-field">
@@ -87,39 +90,64 @@
           </form>
         </div>
       </div>
-      <!--Import jQuery before materialize.js-->
+      <!-- Modal -->
+      <div id="modal1" class="modal">
+      </div>
+    <!-- Scripts -->
       <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
       <script type="text/javascript" src="js/materialize.min.js"></script>
       <script>
       //Submit Button Functionality
+        // Initialize Modal
+          (function ($) {
+            $(function () {
+
+                //initialize all modals
+                $('.modal').modal();
+
+                //now you can open modal from code
+                // $('#modal1').modal('open');
+
+                //or by click on trigger
+                $('.trigger-modal').modal();
+
+            }); // end of document ready
+          })(jQuery); // end of jQuery name space
         $("#submit").on("click", function(){
           event.preventDefault();
-          var tempScore = [
-              $("#question0").val(),
-              $("#question1").val(),
-              $("#question2").val(),
-              $("#question3").val(),
-              $("#question4").val(),
-              $("#question5").val(),
-              $("#question6").val(),
-              $("#question7").val(),
-              $("#question8").val(),
-              $("#question9").val()
-            ];
-          var scoreSum = 0;
-          for(i = 0; i < tempScore.length; i++){
-            scoreSum = parseInt(scoreSum) + parseInt(tempScore[i]);
-          }
-
-          var newFriend = {
-            name:$("#name").val().trim(),
-            // picture:$("#picture").val().trim(),
-            scores: tempScore,
-            totalScore: scoreSum
-          };
-          $.post("/api/newFriend", newFriend).done(function(data) {
-                alert("This will be your friend.");
+          var newName = $('#name').val().trim();
+          var newPic = $('#picture').val().trim();
+          if (newName != "" && newPic != ""){
+            var tempScore = [
+                  $("#question0").val(),
+                  $("#question1").val(),
+                  $("#question2").val(),
+                  $("#question3").val(),
+                  $("#question4").val(),
+                  $("#question5").val(),
+                  $("#question6").val(),
+                  $("#question7").val(),
+                  $("#question8").val(),
+                  $("#question9").val()
+                ];
+            var scoreSum = 0;
+            for(i = 0; i < tempScore.length; i++){
+              scoreSum = parseInt(scoreSum) + parseInt(tempScore[i]);
+            }
+            var newFriend = {
+              name: newName,
+              picture: newPic,
+              scores: tempScore,
+              totalScore: scoreSum
+            };
+            $.post("/api/newFriend", newFriend).done(function(data) {
+                  console.log(data);
+                  $('#modal1').append(data);
+                  $('#modal1').modal('open');
               });
+          } else {
+            Materialize.toast("You forgot your name or picture!", 2000);
+          }
         })
       </script>
     </body>
