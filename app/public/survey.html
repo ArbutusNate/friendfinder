@@ -16,8 +16,8 @@
           <form class="col s12">
             <div class="row">
               <div class="input-field col s6">
-                <input id="first_name" type="text" class="validate">
-                <label for="first_name">Name</label>
+                <input id="name" type="text" class="validate">
+                <label for="name">Name</label>
               </div>
               <!-- Picture Input -->
             </div>
@@ -81,7 +81,7 @@
                 <input type="range" id="question9" min="0" max="10" />
               </p>
             </div>
-            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+            <button class="btn waves-effect waves-light" type="submit" name="action" id="submit">Submit
               <i class="material-icons right">send</i>
             </button>
           </form>
@@ -90,5 +90,37 @@
       <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
       <script type="text/javascript" src="js/materialize.min.js"></script>
+      <script>
+      //Submit Button Functionality
+        $("#submit").on("click", function(){
+          event.preventDefault();
+          var tempScore = [
+              $("#question0").val(),
+              $("#question1").val(),
+              $("#question2").val(),
+              $("#question3").val(),
+              $("#question4").val(),
+              $("#question5").val(),
+              $("#question6").val(),
+              $("#question7").val(),
+              $("#question8").val(),
+              $("#question9").val()
+            ];
+          var scoreSum = 0;
+          for(i = 0; i < tempScore.length; i++){
+            scoreSum = parseInt(scoreSum) + parseInt(tempScore[i]);
+          }
+
+          var newFriend = {
+            name:$("#name").val().trim(),
+            // picture:$("#picture").val().trim(),
+            scores: tempScore,
+            totalScore: scoreSum
+          };
+          $.post("/api/newFriend", newFriend).done(function(data) {
+                alert("This will be your friend.");
+              });
+        })
+      </script>
     </body>
   </html>

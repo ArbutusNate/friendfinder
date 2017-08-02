@@ -20,3 +20,7 @@ body {
   position: relative;
   margin: auto;
 }
+
+#submit {
+  background-color: #1789FC;
+}
