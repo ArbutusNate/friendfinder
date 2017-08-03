@@ -22,6 +22,9 @@ body {
 
 #submit {
   background-color: #1789FC;
+  color: gainsboro;
+  font-size: 18px;
+  font-family: Arial;
 }
 
 .carousel-btn {
