@@ -6,7 +6,6 @@
   var exphbs = require("express-handlebars");
 
 // Shortcuts
-  var app = express();
   var PORT = process.env.PORT || 3000;
   var apiRoutes = require(path.join(__dirname, "app/routing/apiRoutes.js"));
   var htmlRoutes = require(path.join(__dirname, "app/routing/htmlRoutes.js"));

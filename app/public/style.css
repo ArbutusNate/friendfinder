@@ -8,7 +8,6 @@
 }
 body {
   background-color: #220901;
-  padding: 35px;
 }
 
 .range-field {
@@ -23,4 +22,26 @@ body {
 
 #submit {
   background-color: #1789FC;
+}
+
+.homebtn {
+  font-size: 18px;
+  margin-left: 43%;
+  background-color: #1789FC;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+}
+
+.stylebox {
+  font-size: 20px;
+  position: fixed;
+  height: 70%;
+  width: 100%;
+  background-color: #941B0C;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+}
+
+p {
+  color: #1789FC;
 }
