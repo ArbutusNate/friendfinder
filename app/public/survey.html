@@ -25,7 +25,8 @@
         </div>
       </div>
       <div class="container name-bubble" id="survey-bubble">
-          <div class="carousel">
+      </div>
+        <div class="carousel">
             <form>
               <a class="carousel-item" href="#one!">
                 <p class="range-field">
@@ -93,8 +94,6 @@
               </a>
             </form>
           </div>
-        </div>
-      </div>
       <!-- Modal -->
       <div id="modal1" class="modal">
       </div>
@@ -153,7 +152,7 @@
               totalScore: scoreSum
             };
             $.post("/api/newFriend", newFriend).done(function(data) {
-                  console.log(data);
+                  console.log("data: " + data);
                   $('#modal1').append(data);
                   $('#modal1').modal('open');
               });

@@ -93,6 +93,9 @@ body {
   margin-top: -420px;
   margin-left: 570px;
   border: 15px #1789FC dashed;
+  animation-name: rotation;
+  animation-duration: 15s;
+  animation-iteration-count: infinite;
 }
 
 #modal1{
@@ -119,8 +122,9 @@ body {
 }
 
 .carousel {
+  position: fixed;
   border-radius: 50%;
-  margin: 0px 0px 0px 35px;
+  margin: -390px 0px 0px 625px;
   width: 500px;
   height: 500px;
   font-size: 30px;
@@ -138,6 +142,22 @@ body {
   width: 325px;
 }
 
-p {
+.carousel {
+/*  animation-name: otherrotation;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;*/
+}
 
+@keyframes rotation {
+    0%   {transform: rotate(90deg);}
+    25%  {transform: rotate(180deg);}
+    50%  {transform: rotate(270deg);}
+    100% {transform: rotate(360deg);}
+}
+
+@keyframes otherrotation {
+    0%   {transform: rotate(-90deg);}
+    25%  {transform: rotate(-180deg);}
+    50%  {transform: rotate(-270deg);}
+    100% {transform: rotate(-360deg);}
 }
