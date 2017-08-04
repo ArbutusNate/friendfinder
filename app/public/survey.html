@@ -126,6 +126,7 @@
           })(jQuery); // end of jQuery name space
         $("#submit").on("click", function(){
           event.preventDefault();
+          $('#modal1').empty();
           var newName = $('#name').val().trim();
           var newPic = $('#picture').val().trim();
           if (newName != "" && newPic != ""){
